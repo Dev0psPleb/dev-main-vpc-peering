@@ -30,6 +30,11 @@ data "terraform_remote_state" "dev-us-east-2" {
   }
 }
 
+variable "aws_peer_access_key" {}
+variable "aws_peer_secret_key" {}
+variable "aws_this_access_key" {}
+variable "aws_this_secret_key" {}
+
 module "vpc-peering_example_multi-account-multi-region" {
   source  = "grem11n/vpc-peering/aws//examples/multi-account-multi-region"
   version = "4.0.1"
@@ -41,7 +46,7 @@ module "vpc-peering_example_multi-account-multi-region" {
   aws_this_access_key = var.aws_this_access_key
   aws_this_secret_key = var.aws_this_secret_key
 
-  this_vpc_id = data.terraform_remote_state.vpc.vpc_id
-  peer_vpc_id = data.terraform_remote_state.vpc.vpc_id
+  this_vpc_id = data.terraform_remote_state.dev-us-west-2.vpc_id
+  peer_vpc_id = data.terraform_remote_state.dev-us-east-2.vpc_id
 
 }
