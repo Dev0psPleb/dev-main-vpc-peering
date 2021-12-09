@@ -46,7 +46,7 @@ module "vpc-peering_example_multi-account-multi-region" {
   aws_this_access_key = var.aws_this_access_key
   aws_this_secret_key = var.aws_this_secret_key
 
-  this_vpc_id = data.terraform_remote_state.this.module.vpc.aws_vpc.this[0]
-  peer_vpc_id = data.terraform_remote_state.peer.module.vpc.aws_vpc.this[0]
+  this_vpc_id = data.terraform_remote_state.this.vpc.aws_vpc.this[0]
+  peer_vpc_id = data.terraform_remote_state.peer.vpc.aws_vpc.this[0]
 
 }
