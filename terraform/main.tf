@@ -62,12 +62,4 @@ module "vpc-peering_example_multi-account-multi-region" {
   this_vpc_id = data.terraform_remote_state.vpc.vpc_id
   peer_vpc_id = data.terraform_remote_state.vpc.vpc_id
 
-  auto_accept_peering = true
-
-  tags = {
-    Environment = "dev"
-    Account     = "devops-test"
-    PeerAccount = "main"
-  }
-
 }
