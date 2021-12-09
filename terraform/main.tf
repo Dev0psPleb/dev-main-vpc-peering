@@ -30,24 +30,6 @@ data "terraform_remote_state" "dev-us-east-2" {
   }
 }
 
-provider "aws" {
-  alias  = "dev"
-  region = "us-west-2"
-}
-
-provider "aws" {
-  alias  = "main"
-  region = "us-east-2"
-}
-
-locals {
-  tags = {
-    Environment = dev
-    Environment = main
-    Name        = "dev-main-vpc-peering"
-  }
-}
-
 module "vpc-peering_example_multi-account-multi-region" {
   source  = "grem11n/vpc-peering/aws//examples/multi-account-multi-region"
   version = "4.0.1"
